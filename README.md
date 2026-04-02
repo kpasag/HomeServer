@@ -2,47 +2,56 @@
 
 Personal home server used for self-hosting game servers, cloud storage, and remote access.
 
+## Specs
+
+| Component | Details |
+|-----------|---------|
+| OS | Ubuntu 22.04.5 LTS |
+| Kernel | 6.8.0-90-generic |
+| CPU | AMD Ryzen 7 3800X |
+| GPU | AMD Radeon RX 580 |
+| RAM | 32GB DDR4 3200 MHz |
+| Motherboard | MSI MPG X570 Gaming Edge WiFi |
+
+## What's Running
+
+- **Minecraft** -- Fabric server managed with systemd, auto-restarts twice daily, includes a New Year countdown script
+- **CS2** -- Counter-Strike 2 dedicated server running under a separate `steam` user
+- **Palworld** -- Dedicated server with a 24GB memory cap, also under the `steam` user
+- **Samba** -- File share for personal cloud storage across devices
+- **Plex** -- Media server for streaming
+- **SSH** -- Remote access with key-based auth, port forwarded with dynamic DNS via No-IP
+- **Neovim** -- Server-side editor config
+
+## Repo Structure
+
+```
+HomeServer/
+├── configs/
+│   ├── bash/
+│   │   └── .bashrc
+│   ├── netplan/
+│   │   └── 01-network-manager-all.yaml
+│   └── systemd/
+│       ├── minecraft.service
+│       ├── minecraft-restart.service
+│       ├── minecraft-restart.timer
+│       ├── minecraft-newyear-countdown.service
+│       ├── minecraft-newyear-countdown.timer
+│       ├── palworld.service
+│       └── cs2.service
+└── nvim/
+```
+
 ## Highlights
-- Remote access via SSH (port forwarded) with key-based auth
-- Dynamic DNS using No-IP
-- Samba file share for personal cloud
-- Game servers:
-  - Minecraft
-  - Counter-Strike 2 (CS2)
-  - Rust
-  - Palworld
-- Service management with systemd (services + timers)
-- Lightweight tooling: Neovim, Python, Java 21
 
-## Quick Links
-- Docs:
-  - [Overview](docs/overview.md)
-  - [Hardware](docs/hardware.md)
-  - [Networking](docs/networking.md)
-  - [SSH](docs/ssh.md)
-  - [No-IP Dynamic DNS](docs/dns-noip.md)
-  - [Samba](docs/samba.md)
-  - [Game Servers](docs/game-servers.md)
-  - [systemd](docs/systemd.md)
-  - [Maintenance](docs/maintenance.md)
-  - [Troubleshooting](docs/troubleshooting.md)
-  - [Security Notes](docs/security.md)
+- Static IP assigned via Netplan so the server always gets the same local address
+- SSH login displays the last session's location (city + region for external IPs, or "local network" for LAN connections) using ipinfo.io
+- Game servers run as systemd services with automatic restarts and memory limits
+- Minecraft server restarts daily at 11:59 AM and 11:59 PM via systemd timers
+- CS2 and Palworld run under a dedicated `steam` user for isolation
+- Dynamic DNS through No-IP for remote access without a static public IP
 
-## Repo Notes (Security)
-This repo does not contain secrets:
-- No private keys
-- No real IPs, hostnames, domains, tokens, or passwords
-- Example configs live in `configs/examples/`
+## Security
 
-## What I learned building this
-- Linux service management (systemd units, timers, logs)
-- Networking fundamentals (port forwarding, DNS, firewall rules)
-- Reliability habits (restarts, backups, monitoring checks)
-- Practical troubleshooting (logs, process inspection, resource usage)
-
-## Tech
-- OS: Ubuntu 22.04.5 LTS
-- Kernel: 6.8.0-90-generic
-- CPU: Ryzen 7 3800X
-- GPU: Radeon RX 580
-- RAM: 32GB DDR4 3200 MHz
+This repo does not contain secrets. No private keys, real passwords, tokens, or API keys are included. Local network IPs (192.168.x.x) are present in configs but pose no external risk.
