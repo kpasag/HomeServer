@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart Timer for Minecraft Service
+
+[Timer]
+Unit=minecraft-newyear-countdown.service
+OnCalendar=Mon-Sun *-*-* 23:55:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

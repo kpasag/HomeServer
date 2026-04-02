@@ -1,0 +1,16 @@
+[Unit]
+Description=Fabric Minecraft Server
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/home/kyle/servers/mcserver
+User=kyle
+Group=kyle
+ExecStart=/usr/bin/screen -DmS minecraft bash start.sh
+ExecStop=/home/kyle/servers/mcserver/stop.sh
+TimeoutStopSec==60
+
+[Install]
+WantedBy=multi-user.target

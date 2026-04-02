@@ -1,0 +1,19 @@
+[Unit]
+Description=CS2 Dedicated Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=steam
+Group=steam
+Environment="templdpath=$LD_LIBRARY_PATH"
+Environment="LD_LIBRARY_PATH=/home/steam/:$LD_LIBRARY_PATH"
+Environment="SteamAppId=730"
+ExecStartPre=/home/steam/Steam/steamapps/common/CS2Server-Backup/cs2-maintenance.sh
+ExecStart=/home/steam/Steam/steamapps/common/CS2-Server.sh
+Restart=always
+RestartSec=30s
+MemoryMax=20G
+
+[Install]
+WantedBy=multi-user.target

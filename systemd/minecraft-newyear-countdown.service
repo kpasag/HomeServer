@@ -1,0 +1,10 @@
+[Unit]
+Description=New Year Countdown
+
+[Service]
+Type=oneshot
+User=kyle
+ExecStart=/home/kyle/servers/mcserver/newyear.sh
+
+[Install]
+WantedBy=multi-user.target

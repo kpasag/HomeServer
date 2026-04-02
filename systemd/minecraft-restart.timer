@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart Timer for Minecraft Service
+
+[Timer]
+Unit=minecraft-restart.service
+OnCalendar=Mon-Sun *-*-* 23:59:00
+OnCalendar=Mon-Sun *-*-* 11:59:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
