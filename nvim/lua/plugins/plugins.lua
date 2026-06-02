@@ -122,5 +122,78 @@ return {
     })
   end,
 },
-
+{
+  "nvim-treesitter/nvim-treesitter",
+  branch = "master",
+  build = ":TSUpdate",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
+  config = function()
+    require("nvim-treesitter.configs").setup({
+      auto_install = true,
+      ensure_installed = {
+        "bash",
+        "c",
+        "cpp",
+        "java",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "python",
+        "typescript",
+        "yaml",
+      },
+      highlight = { enable = true },
+      indent = { enable = true },
+    })
+    require("treesitter-context").setup({})
+  end,
+},
+{
+  "nvim-lualine/lualine.nvim",
+  event = "VeryLazy",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  opts = {
+    options = {
+      theme = "tokyonight",
+      icons_enabled = true,
+    },
+  },
+},
+{
+  "lewis6991/gitsigns.nvim",
+  opts = {},
+},
+{
+  "mbbill/undotree",
+  keys = {
+    { "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "Undotree Toggle" },
+  },
+},
+{
+  "tpope/vim-fugitive",
+  cmd = "Git",
+},
+{
+  "stevearc/aerial.nvim",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-tree/nvim-web-devicons",
+  },
+  opts = {},
+  keys = {
+    { "<leader>o", "<cmd>AerialToggle<CR>", desc = "Aerial Outline Toggle" },
+  },
+},
+{
+  "greggh/claude-code.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  config = function()
+    require("claude-code").setup()
+  end,
+},
 }
