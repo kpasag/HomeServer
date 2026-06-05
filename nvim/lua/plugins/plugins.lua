@@ -38,28 +38,9 @@ return {
   config = function()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "pyright",
+        "pylsp",
         "jdtls",
         "clangd",
-        "ts_ls",
-      },
-    })
-  end,
-},{
-  "williamboman/mason.nvim",
-  config = function()
-    require("mason").setup()
-  end,
-},
-{
-  "williamboman/mason-lspconfig.nvim",
-  config = function()
-    require("mason-lspconfig").setup({
-      ensure_installed = {
-        "pyright",
-        "jdtls",
-        "clangd",
-        "ts_ls",
       },
     })
   end,
@@ -76,11 +57,10 @@ return {
 {
   "neovim/nvim-lspconfig",
   config = function()
-    vim.lsp.config("pyright", {})
+    vim.lsp.config("pylsp", {})
     vim.lsp.config("jdtls", {})
     vim.lsp.config("clangd", {})
-    vim.lsp.config("ts_ls", {})
-    vim.lsp.enable({ "pyright", "jdtls", "clangd", "ts_ls" })
+    vim.lsp.enable({  "jdtls", "clangd", "pylsp" })
   end,
 },
 {
