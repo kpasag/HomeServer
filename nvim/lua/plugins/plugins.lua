@@ -168,12 +168,19 @@ return {
   },
 },
 {
-  "greggh/claude-code.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
+  "coder/claudecode.nvim",
+  dependencies = { "folke/snacks.nvim" },
+  cmd = {
+    "ClaudeCode",
+    "ClaudeCodeFocus",
+    "ClaudeCodeSelectModel",
+    "ClaudeCodeAdd",
+    "ClaudeCodeSend",
   },
   config = function()
-    require("claude-code").setup()
+    require("claudecode").setup({
+      terminal_cmd = "/usr/local/bin/claude",
+    })
   end,
 },
 }
