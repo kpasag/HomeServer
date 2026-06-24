@@ -6,8 +6,8 @@ Personal home server used for self-hosting game servers, cloud storage, and remo
 
 | Component | Details |
 |-----------|---------|
-| OS | Ubuntu 22.04.5 LTS |
-| Kernel | 6.8.0-90-generic |
+| OS | Ubuntu 24.04.4 LTS |
+| Kernel | 6.8.0-124-generic |
 | CPU | AMD Ryzen 7 3800X |
 | GPU | AMD Radeon RX 580 |
 | RAM | 32GB DDR4 3200 MHz |
@@ -17,6 +17,7 @@ Personal home server used for self-hosting game servers, cloud storage, and remo
 
 - **Minecraft** -- Fabric server managed with systemd, auto-restarts twice daily, includes a New Year countdown script
 - **CS2** -- Counter-Strike 2 dedicated server running under a separate `steam` user
+- **Rust** -- Rust dedicated server, also under the `steam` user
 - **Palworld** -- Dedicated server with a 24GB memory cap, also under the `steam` user
 - **Samba** -- File share for personal cloud storage across devices
 - **Plex** -- Media server for streaming
