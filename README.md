@@ -40,7 +40,8 @@ HomeServer/
 │       ├── minecraft-newyear-countdown.service
 │       ├── minecraft-newyear-countdown.timer
 │       ├── palworld.service
-│       └── cs2.service
+│       ├── cs2.service
+│       └── samba.service
 └── nvim/
 ```
 
