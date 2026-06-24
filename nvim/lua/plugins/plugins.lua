@@ -4,7 +4,12 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         -- optional but recommended
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        -- cmake build works cross-platform (macOS/Linux/Windows) as long as
+        -- cmake + a C compiler are present; avoids requiring `make` on Windows.
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+        },
     }
 },
 
