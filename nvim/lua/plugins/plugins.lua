@@ -109,6 +109,10 @@ return {
 },
 {
   "nvim-treesitter/nvim-treesitter",
+  -- Pin to the stable `master` branch. The default branch was switched to the
+  -- `main` rewrite, which removed the `nvim-treesitter.configs` .setup() API
+  -- used below. Pinning keeps this config working across all machines.
+  branch = "master",
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-context",
@@ -214,5 +218,19 @@ return {
     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
   },
+},
+{
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  keys = {
+    { "<leader>tt", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
+  },
+  config = function()
+    require("nvim-tree").setup({})
+  end,
+},
+{
+  "L3MON4D3/LuaSnip",
+  dependencies = { "rafamadriz/friendly-snippets" },
 },
 }
