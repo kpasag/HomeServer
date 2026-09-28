@@ -65,7 +65,8 @@ return {
     vim.lsp.config("pylsp", {})
     vim.lsp.config("jdtls", {})
     vim.lsp.config("clangd", {})
-    vim.lsp.enable({  "jdtls", "clangd", "pylsp" })
+    vim.lsp.config("ocamllsp", {})
+    vim.lsp.enable({  "jdtls", "clangd", "pylsp", "ocamllsp" })
   end,
 },
 {
